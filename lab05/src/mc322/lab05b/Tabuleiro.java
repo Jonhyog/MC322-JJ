@@ -62,7 +62,7 @@ public class Tabuleiro {
 		if (pc.branco != turno) {
 			// Se lastCapture == source eh continuacao da captura multipla. Logo eh valido
 			if (!multiplaCap) {
-				System.out.println("Movimento Inválido. Turno das " + (turno ? "brancas." : "pretas"));
+				System.out.println("Movimento invalido!");
 				return;				
 			}
 		}
@@ -79,7 +79,7 @@ public class Tabuleiro {
 		}
 		
 		if (!pc.isValid(source, target, caminho)) {
-			System.out.println("Movimento Invalido.");
+			System.out.println("Movimento invalido!");
 			erro = true;
 			return;
 		}
@@ -156,7 +156,7 @@ public class Tabuleiro {
 			move(pc, sourceCord, targetCord);
 		} else {
 			erro = true;
-			System.out.println("Movimento Invalido. Selecione uma peca valida");
+			System.out.println("Movimento invalido!");
 		}
 	}
 	

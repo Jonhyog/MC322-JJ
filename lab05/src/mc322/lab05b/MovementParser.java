@@ -1,8 +1,8 @@
 package mc322.lab05b;
 
 public class MovementParser {
-	String source, target;
-	int x, y;
+	private String source, target;
+	private int x, y;
 	
 	MovementParser(){
 		this.source = null;
