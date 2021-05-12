@@ -1,15 +1,13 @@
 package mc322.lab06;
 
 public class Heroi extends Componente {
-	public static int prioridade = 3;
-	
 	private String nome;
 	private boolean alive;
 	private boolean loadedBow;
 	private boolean gold;
 	
 	Heroi(String nome) {
-		super("P", 0);
+		super("P", 0, 3);
 		this.nome= nome;
 		alive = true;
 		loadedBow = false;
@@ -20,9 +18,28 @@ public class Heroi extends Componente {
 		this.score += num;
 	}
 	
-	public void move(int pos[]) {
-		this.pos = pos;
-		// FIX-ME: Enviar sinal para atualizar posicao na caverna
+	public void moveCima() {
+		int target[] = new int[] {pos[0], pos[1] - 1};
+		caverna.moverComponente(this, pos, target);
+		pos = target;
+	}
+	
+	public void moveBaixo() {
+		int target[] = new int[] {pos[0], pos[1] + 1};
+		caverna.moverComponente(this, pos, target);
+		pos = target;
+	}
+	
+	public void moveEsquerda() {
+		int target[] = new int[] {pos[0] - 1, pos[1]};
+		caverna.moverComponente(this, pos, target);
+		pos = target;
+	}
+	
+	public void moveDireita() {
+		int target[] = new int[] {pos[0] + 1, pos[1]};
+		caverna.moverComponente(this, pos, target);
+		pos = target;
 	}
 	
 	public void useBow() {
