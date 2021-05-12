@@ -18,7 +18,7 @@ public class Sala {
 		
 		for (i = 1; i < n; i++) {
 			temp = vComponentes[i];
-			for (j = 1; j > 0 && temp.getPrioridade() > vComponentes[j-1].getPrioridade(); j--) {
+			for (j = i; j > 0 && temp.getPrioridade() > vComponentes[j-1].getPrioridade(); j--) {
 				vComponentes[j] = vComponentes[j-1];
 			}
 			vComponentes[j] = temp;
@@ -27,6 +27,19 @@ public class Sala {
 	
 	private void visitarSala() {
 		this.visitada = true;
+	}
+	
+	public Componente getPrincipal() {
+		Componente comp = null;
+		
+		for (int i = 0; i < n; i++) {
+			comp = vComponentes[i];
+			// Se nao eh o heroi
+			if (comp.getPrioridade() != 3) {
+				break;
+			}
+		}
+		return comp;
 	}
 	
 	public void adicionarComponente(Componente comp) {

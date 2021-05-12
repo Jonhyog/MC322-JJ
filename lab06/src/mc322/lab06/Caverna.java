@@ -30,6 +30,10 @@ public class Caverna {
 		return true;
 	}
 	
+	public Componente getPrincipal(int posSala[]) {
+		return vSalas[posSala[1]][posSala[0]].getPrincipal();
+	}
+	
 	public String exibirCaverna() {
 		String caverna = "";
 		

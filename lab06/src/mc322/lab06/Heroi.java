@@ -42,6 +42,10 @@ public class Heroi extends Componente {
 		pos = target;
 	}
 	
+	public Componente analisarSala() {
+		return caverna.getPrincipal(pos);
+	}
+	
 	public void useBow() {
 		loadedBow = !loadedBow;
 	}
