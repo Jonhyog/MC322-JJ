@@ -25,13 +25,41 @@ public class Caverna {
 	public boolean moverComponente(Componente comp, int[] source, int target[]) {
 		vSalas[source[1]][source[0]].removerComponente(comp);
 		vSalas[target[1]][target[0]].adicionarComponente(comp);
-		
 		// FIX-ME: A sala deve verificar se pode mover o componente
 		return true;
 	}
 	
+	// FIX-ME: Remover pelo id?
+	public void removerComponente(Componente comp, int posSala[]) {
+		vSalas[posSala[1]][posSala[0]].removerComponente(comp);
+	}
+	
 	public Componente getPrincipal(int posSala[]) {
 		return vSalas[posSala[1]][posSala[0]].getPrincipal();
+	}
+	
+	public int handleHeroAttack(Componente heroi) {
+		int pos[] = heroi.getPosition();
+		int id = 0; // Id do componente que recebeu dano
+		Componente comp = vSalas[pos[1]][pos[0]].getPrincipal();
+		
+		if (comp == null)
+			return id;
+		
+		if (comp.getID() == 4) {
+			if (Wumpus.receiveDamage()) {
+				id = comp.getID();
+				removerComponente(comp, comp.getPosition());
+			} else {				
+				id = heroi.getID();
+			}
+		}		
+		
+		return id;
+	}
+	
+	public void visitarSala(int pos[]) {
+		vSalas[pos[1]][pos[0]].visitarSala();
 	}
 	
 	public String exibirCaverna() {
@@ -47,7 +75,7 @@ public class Caverna {
 			caverna += '\n';
 		}
 		
-		caverna += " ";
+		caverna += "  ";
 		for (int i = 0; i < vSalas.length; i++) {
 			caverna += i + 1;
 			caverna += " ";

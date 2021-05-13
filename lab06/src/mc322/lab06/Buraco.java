@@ -4,7 +4,7 @@ public class Buraco extends Componente {
     public int prioridade;
 
     Buraco() {
-        super("B", -1000, 4);
+        super("B", -1000, 4, 5);
     }
     
     private int[][] gerarVizinhos() {

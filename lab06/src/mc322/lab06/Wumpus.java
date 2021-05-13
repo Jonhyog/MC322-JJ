@@ -6,7 +6,7 @@ public class Wumpus extends Componente {
     private boolean alive;
 
     Wumpus() {
-        super("W", -1000, 4);
+        super("W", -1000, 4, 4);
         this.alive = true;
     }
 
@@ -14,13 +14,12 @@ public class Wumpus extends Componente {
         return this.alive;
     }
 
-    public boolean receiveDamage(){
+    public static boolean receiveDamage(){
         Random gerador = new Random();
         
         if(gerador.nextInt(2) == 0){
-            die();
             return true;
-        }else{
+        } else{
             return false;
         }
     }

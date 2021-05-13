@@ -25,7 +25,7 @@ public class Sala {
 		}
 	}
 	
-	private void visitarSala() {
+	public void visitarSala() {
 		this.visitada = true;
 	}
 	
@@ -47,12 +47,6 @@ public class Sala {
 			vComponentes[n] = comp;
 			n++;
 			ordenarComponentes();
-			
-			// Se for heroi marca como visitada
-			// Provavelmente ha uma forma melhor de fazer isto
-			// FIX-ME
-			if (comp.getPrioridade() == 3)
-				visitarSala();
 		}
 	}
 	
