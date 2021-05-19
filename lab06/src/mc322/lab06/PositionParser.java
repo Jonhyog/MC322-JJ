@@ -21,7 +21,6 @@ public class PositionParser {
 	public int[] parsePosition() {
 		int pos[] = new int[2];
 		
-		//FIX-ME: 3:4,W == (3, 4) ou (4, 3)
 		pos[0] = this.position.charAt(2) - '1';
 		pos[1] = this.position.charAt(0) - '1';
 		

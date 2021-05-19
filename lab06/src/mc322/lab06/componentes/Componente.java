@@ -1,4 +1,6 @@
-package mc322.lab06;
+package mc322.lab06.componentes;
+
+import mc322.lab06.Caverna;
 
 public class Componente {
 	protected int id;
@@ -7,7 +9,7 @@ public class Componente {
 	protected String sprite;
 	protected Caverna caverna;
 	
-	Componente(String sprite, int score, int prioridade, int id) {
+	public Componente(String sprite, int score, int prioridade, int id) {
 		this.sprite = sprite;
 		this.score = score;
 		this.prioridade = prioridade;

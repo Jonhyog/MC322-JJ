@@ -1,17 +1,13 @@
-package mc322.lab06;
+package mc322.lab06.componentes;
 
 import java.util.Random;
 
+import mc322.lab06.Caverna;
+
 public class Wumpus extends Componente {
-    private boolean alive;
 
-    Wumpus() {
+    public Wumpus() {
         super("W", -1000, 4, 4);
-        this.alive = true;
-    }
-
-    public boolean getAlive(){
-        return this.alive;
     }
 
     public static boolean receiveDamage(){
@@ -22,14 +18,6 @@ public class Wumpus extends Componente {
         } else{
             return false;
         }
-    }
-
-    public int dealDamage(){
-        return getValue();
-    }
-
-    public void die(){
-        this.alive = false;
     }
     
     private int[][] gerarVizinhos() {
@@ -49,7 +37,7 @@ public class Wumpus extends Componente {
     	gerarFedor(pos);
     }
     
-    public void gerarFedor(int pos[]){
+    private void gerarFedor(int pos[]){
     	int vizinhos[][] = gerarVizinhos();
         Componente comp;
         

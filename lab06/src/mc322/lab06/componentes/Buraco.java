@@ -1,9 +1,11 @@
-package mc322.lab06;
+package mc322.lab06.componentes;
+
+import mc322.lab06.Caverna;
 
 public class Buraco extends Componente {
     public int prioridade;
 
-    Buraco() {
+    public Buraco() {
         super("B", -1000, 4, 5);
     }
     
