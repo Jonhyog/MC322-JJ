@@ -1,8 +1,11 @@
 package mc322.lab06;
 
+import mc322.lab06.componentes.Heroi;
+
 public class AppMundoWumpus {
 	public static void main(String args[]) {
 		String cavePath = null, caveTemplate[][], command = null;
+		String nomeHeroi = null;
 		Caverna cave = null;
 		Montador mount = new Montador();
 		CSVHandling csv = new CSVHandling();
@@ -10,7 +13,7 @@ public class AppMundoWumpus {
 		Controle ctrl = null;
 		
 		if (args.length == 0) {
-			System.out.println("Insira o caminho da caverna.");
+			System.out.println("Insira o caminho da caverna e o nome do jogador.");
 			return;
 		}
 		
@@ -18,6 +21,8 @@ public class AppMundoWumpus {
 		csv.setDataSource(cavePath);
 		caveTemplate = csv.requestCommands();
 		
+		nomeHeroi = args[1];
+		mount.setPlayerName(nomeHeroi);
 		mount.setCaveTemplate(caveTemplate);
 		mount.generateCave();
 		cave = mount.getCaverna();
@@ -33,7 +38,6 @@ public class AppMundoWumpus {
 		while (jogador.isAlive() && !jogador.hasEscaped()) {
 			command = ctrl.nextCommand();
 			ctrl.runCommand(command);
-			
 			System.out.println(cave);
 			jogador.exibirFlechas();
 			ctrl.exibirHUD();

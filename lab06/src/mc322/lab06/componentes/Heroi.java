@@ -1,4 +1,6 @@
-package mc322.lab06;
+package mc322.lab06.componentes;
+
+import mc322.lab06.Caverna;
 
 public class Heroi extends Componente {
 	private String nome;
@@ -7,7 +9,7 @@ public class Heroi extends Componente {
 	private int flechas;
 	private boolean gold;
 	
-	Heroi(String nome) {
+	public Heroi(String nome) {
 		super("P", 0, 3, 3);
 		this.nome= nome;
 		alive = true;
@@ -26,7 +28,13 @@ public class Heroi extends Componente {
 	
 	private void move(int target[]) {
 		int hit;
-		caverna.moverComponente(this, pos, target);
+		boolean podeMover;
+		podeMover = caverna.moverComponente(this, pos, target);
+		if (!podeMover) {
+			System.out.println("Posicao nao eh valida");
+			return;
+		}
+		
 		updateScore(-15);
 		pos = target;
 		
@@ -67,6 +75,10 @@ public class Heroi extends Componente {
 		return caverna.getPrincipal(pos);
 	}
 	
+	public Caverna getCaverna() {
+		return caverna;
+	}
+	
 	private int getFlechas() {
 		return this.flechas;
 	}
@@ -88,11 +100,16 @@ public class Heroi extends Componente {
 		return gold;
 	}
 	
-	public void captureGold(Componente ouroSala) {
-		if (!gold) {
+	public void captureGold() {
+		Componente ouro;
+		ouro = analisarSala();
+		
+		if (ouro.getID() == 6) {
 			gold = !gold;
-			updateScore(ouroSala.getValue());
-			caverna.removerComponente(ouroSala, ouroSala.pos);
+			caverna.removerComponente(ouro, ouro.pos);
+			System.out.println("Voce pega o ouro");				
+		} else {				
+			System.out.println("O ouro nao esta nessa sala.");
 		}
 	}
 	
@@ -113,7 +130,9 @@ public class Heroi extends Componente {
 	}
 	
 	public void tryToEscape() {
-		if ((pos[0] == 0 && pos[1] == 0) && getGold())
+		if ((pos[0] == 0 && pos[1] == 0) && getGold()) {
 			escaped = true;
+			updateScore(1000);
+		}
 	}
 }

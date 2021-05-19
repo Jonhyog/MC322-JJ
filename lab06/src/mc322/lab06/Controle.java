@@ -2,6 +2,9 @@ package mc322.lab06;
 
 import java.util.Scanner;
 
+import mc322.lab06.componentes.Componente;
+import mc322.lab06.componentes.Heroi;
+
 public class Controle {
 	private Scanner keyboard;
 	private Heroi jogador;
@@ -53,7 +56,6 @@ public class Controle {
 	}
 	
 	public boolean runCommand(String command) {
-		Componente comp;
 		
 		switch (command) {
 		case "w":
@@ -72,22 +74,10 @@ public class Controle {
 			jogador.loadBow();
 			break;
 		case "c":
-			comp = jogador.analisarSala();
-			
-			// Pode substituir ID
-			// if (comp.getClass() == Ouro.class)
-				// System.out.println("Ok");
-				
-			if (comp.getID() == 6) {
-				jogador.captureGold(comp);
-				System.out.println("Voce pega o ouro");				
-			} else {				
-				System.out.println("O ouro nao esta nessa sala.");
-			}
-			
+			jogador.captureGold();
 			break;
 		case "q":
-			System.out.println(jogador.caverna);
+			System.out.println(jogador.getCaverna());
 			exibirHUD();
 			System.out.println("Volte sempre !");
 			System.exit(0);

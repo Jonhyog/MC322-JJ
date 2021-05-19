@@ -1,5 +1,8 @@
 package mc322.lab06;
 
+import mc322.lab06.componentes.Componente;
+import mc322.lab06.componentes.Wumpus;
+
 public class Caverna {
 	private int x, y;
 	private Sala vSalas[][];
@@ -17,19 +20,25 @@ public class Caverna {
 		}
 	}
 	
+	public boolean ehPosValida(int pos[]) {
+		if ((pos[0] >= 0 && pos[0] < 4) && (pos[1] >= 0 && pos[1] < 4))
+			return true;
+		return false;
+	}
+	
 	public void adicionarComponente(Componente comp, int posSala[]) {
 		if ((posSala[0] >= 0 && posSala[0] < x) && (posSala[1] >= 0 && posSala[1] < y))
 			vSalas[posSala[1]][posSala[0]].adicionarComponente(comp);
 	}
 	
 	public boolean moverComponente(Componente comp, int[] source, int target[]) {
+		if (!ehPosValida(source) || !ehPosValida(target))
+			return false;
 		vSalas[source[1]][source[0]].removerComponente(comp);
 		vSalas[target[1]][target[0]].adicionarComponente(comp);
-		// FIX-ME: A sala deve verificar se pode mover o componente
 		return true;
 	}
 	
-	// FIX-ME: Remover pelo id?
 	public void removerComponente(Componente comp, int posSala[]) {
 		vSalas[posSala[1]][posSala[0]].removerComponente(comp);
 	}
@@ -75,7 +84,7 @@ public class Caverna {
 			caverna += '\n';
 		}
 		
-		caverna += "  ";
+		caverna += " ";
 		for (int i = 0; i < vSalas.length; i++) {
 			caverna += i + 1;
 			caverna += " ";

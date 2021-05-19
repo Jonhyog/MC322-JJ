@@ -1,11 +1,13 @@
 package mc322.lab06;
 
+import mc322.lab06.componentes.Componente;
+
 public class Sala {
 	private Componente vComponentes[];
 	private int n, max;
 	private boolean visitada;
 	
-	Sala() {
+	public Sala() {
 		this.n = 0;
 		this.max = 4;
 		this.visitada = false;

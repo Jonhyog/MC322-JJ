@@ -1,7 +1,7 @@
-package mc322.lab06;
+package mc322.lab06.componentes;
 
 public class Brisa extends Componente {
-    Brisa() {
+    public Brisa() {
         super("b", 0, 1, 1);
     }
 }
